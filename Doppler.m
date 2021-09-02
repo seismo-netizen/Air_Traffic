@@ -23,7 +23,8 @@ h = figure; set(h, 'Visible', 'off');
 subplot(2,1,1)
 pcolor(T2,F,abs(S2)); shading interp; hold on;
 caxis([0 4000])
-box on; ylabel('F (Hz)')
+box on; ylabel('Freq. (Hz)')
+colormap(turbo)
 xlim([t1 t2])
 title('Jday 146 event 1')
 
@@ -35,7 +36,7 @@ end
 
 subplot(2,1,2)
 t = 0:sachdr.delta:(length(data)-1)*sachdr.delta;
-plot(t,data);
+plot(t,data,'-k');
 xlim([min(t) max(t)])
 xlabel('Time (s)')
 ylabel('Seismogram')
@@ -78,7 +79,7 @@ t0 = fitresult.t0 + mean(T2);
 %% Plot fit with data.
 h = figure; set(h, 'Visible', 'off');
 h1 = plot( fitresult, xData , yData,'.k');
-legend(h1, 'freq. vs. time', 'curve fit');
+legend(h1, 'Freq. vs. time', 'Curve fit');
 title(['f_0 = ' num2str(f0) 'Hz, v_0 = ' num2str(v0) 'm/s, l = ' num2str(l) 'm']);
 % Label axes
 xlabel('Time (s)')
